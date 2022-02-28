@@ -60,8 +60,8 @@ class _ChatPageState extends State<ChatPage> {
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return index % 2 == 0
-                          ? leftChatContainer()
-                          : rightChatContainer();
+                          ? const leftChatContainer()
+                          : const rightChatContainer();
                     }),
               ),
               Container(
