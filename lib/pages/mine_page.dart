@@ -34,6 +34,9 @@ class _MinePageState extends State<MinePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
+                      constraints: const BoxConstraints(
+                          maxWidth: double.infinity,
+                          maxHeight: double.infinity),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [

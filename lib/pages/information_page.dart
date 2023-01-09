@@ -10,6 +10,9 @@ class InformationPage extends StatefulWidget {
 class _InformationPageState extends State<InformationPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(child: Text('资讯页面'));
+    return Container(
+        constraints: const BoxConstraints(
+            maxWidth: double.infinity, maxHeight: double.infinity),
+        child: const Text('资讯页面'));
   }
 }

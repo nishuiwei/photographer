@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -119,7 +117,7 @@ class _HomePageState extends State<HomePage> {
              * */
             mainAxisSpacing: Adapt.px(60),
             crossAxisSpacing: Adapt.px(22),
-            staggeredTileBuilder: (index) => StaggeredTile.fit(1),
+            staggeredTileBuilder: (index) => const StaggeredTile.fit(1),
             itemBuilder: (BuildContext context, int index) => SizedBox(
               // color: Colors.green,
               //随机生成高度
@@ -128,9 +126,15 @@ class _HomePageState extends State<HomePage> {
               child: SizedBox(
                   child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                    child: Image.asset(_listItem[index]['image']),
+                    width: double.infinity,
+                    child: Image.asset(
+                      _listItem[index]['image'],
+                      width: MediaQuery.of(context).size.width,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                   SizedBox(
                     height: Adapt.px(40),
@@ -152,19 +156,18 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox(
-                            width: Adapt.px(196),
+                            // width: Adapt.px(196),
                             child: Text(
-                              _listItem[index]['subtitle'],
-                              softWrap: true,
-                              textAlign: TextAlign.left,
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: Adapt.px(28),
-                                  color:
-                                      const Color.fromRGBO(223, 223, 223, 1)),
-                            )),
+                          _listItem[index]['subtitle'],
+                          softWrap: true,
+                          textAlign: TextAlign.left,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              fontSize: Adapt.px(28),
+                              color: const Color.fromRGBO(223, 223, 223, 1)),
+                        )),
                         Container(
                           margin: EdgeInsets.only(right: Adapt.px(10)),
                           child: Row(

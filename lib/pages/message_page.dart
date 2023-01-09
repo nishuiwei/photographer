@@ -44,7 +44,7 @@ class _MessagePageState extends State<MessagePage> {
         ),
         body: Container(
             padding: EdgeInsets.fromLTRB(
-                Adapt.px(40), Adapt.px(60), Adapt.px(40), Adapt.px(60)),
+                Adapt.px(40), Adapt.px(60), Adapt.px(40), 0),
             child: Column(
               children: [
                 RowByTextWrapper(),
@@ -65,14 +65,15 @@ class _MessagePageState extends State<MessagePage> {
                 ),
                 Expanded(
                   flex: 1,
-                  // height: 200,
                   child: EasyRefresh(
                     onRefresh: () async {
                       // _refresh();
+                      // ignore: avoid_print
                       print('刷新');
                     },
                     onLoad: () async {
                       // _load();
+                      // ignore: avoid_print
                       print('加载');
                     },
                     header: ClassicalHeader(
@@ -119,9 +120,10 @@ class ChatItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Padding(
-        padding: EdgeInsets.only(bottom: Adapt.px(40)),
+        padding: index == 11
+            ? EdgeInsets.only(bottom: Adapt.px(0))
+            : EdgeInsets.only(bottom: Adapt.px(40)),
         child: (Row(
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Stack(children: [
@@ -140,6 +142,7 @@ class ChatItem extends StatelessWidget {
                       ),
                       child: const CircleAvatar(
                           radius: 60,
+                          backgroundColor: Color(0xFF565E70),
                           backgroundImage:
                               ExactAssetImage('assets/images/avatar.jpeg')))),
               Positioned(
@@ -161,7 +164,7 @@ class ChatItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    '卫慧杰',
+                    '卫慧杰-$index',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: Adapt.px(30),
